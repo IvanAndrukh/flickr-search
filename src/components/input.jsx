@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import '../styles/input.css';
+
 
 class InputName extends Component {
   constructor() {
@@ -6,23 +8,19 @@ class InputName extends Component {
     this.state = {
       value: ""
     }
-    this.handleSearch = this.handleSearch.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-
   }
   
-  handleInput(elem) {
+  handleInput = (elem) => {
     let value = elem.target.value;
     this.setState({ value });
   }
 
-  handleSearch(){
+  handleSearch= () => {
     console.log(`Your value is ${ this.state.value }`);
   }
   render() {
     return (
       <div className="main">
-        <p>Hello Oleh</p>
         <input
           type="text"
           className="searchInput"
