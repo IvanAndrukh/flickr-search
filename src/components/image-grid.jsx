@@ -1,35 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ImageGrid extends Component {
-  constructor() {
-    super(props);
-    this.state = {
-      imagesArray:[]
-    }
-  }
+const imageArray = images => images.map(photo => {
+  let src = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
+  return (
+    <div
+      className="photo-grid__photo-container"
+      key={photo.id}
+    >
+      <a href={src} target="_blank">
+        <img
+          className="photo"
+          src={src}
+          alt={photo.title}
+        />
+      </a>
+    </div>
+  );
+});
 
-  imageRequestHandler = (searchValue) => {
-    const apiKey = '6b3575d10435de5f010fc941f5eff94a'
-    let url = `https://api.flickr.com/services/rest/?api_key=${apiKey}&method=flickr.photos.search&format=json&nojsoncallback=1&&per_page=50&page=1&text=${searchValue}`;
-  
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          this.setState({
-            imagesArray: data.photos.photos
-          });
-        })
-        .catch(error => {
-          throw error;
-        });
-  };
-  render() {
-    return (
-      <div className="images-grid">
+const ImageGrid = ({ images }) => {
 
-      </div>
-    );
-  }
+  console.log('imagesGrid', images);
+  return (
+    <div className="image-grid">
+      {imageArray(images)}
+    </div>
+  );
 }
 
 export default ImageGrid;

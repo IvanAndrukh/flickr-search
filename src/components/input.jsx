@@ -16,7 +16,10 @@ class InputName extends Component {
   }
 
   handleSearch= () => {
-    console.log(`Your value is ${ this.state.value }`);
+    const { getValue } = this.props;
+    const { value } = this.state;
+
+    getValue(value);
   }
   render() {
     return (
