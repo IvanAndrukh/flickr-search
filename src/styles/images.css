@@ -4,8 +4,10 @@
   justify-content: center;
   padding: 20px;
 }
-.photo-grid__photo-container.photo {
-  margin-left: 10px;
-  height: 300px;
-  width: auto;
+.photo-grid-container {
+  display:flex;
+  flex-direction: column;
+  height: auto;
+  width: 600px;
+  margin: 10px;
 }

@@ -21,9 +21,19 @@ class InputName extends Component {
 
     getValue(value);
   }
+
+  filter= (e) => {
+    if (e) {
+      e.preventDefault();
+    }
+  }
+
   render() {
     return (
-      <div className="main">
+      <form
+        className="main"
+        onSubmit={ this.filter }  
+      >
         <input
           type="text"
           className="searchInput"
@@ -32,7 +42,7 @@ class InputName extends Component {
           onChange = { this.handleInput }
         />
         <button onClick = {this.handleSearch } > Search </button>
-      </div>
+      </form>
     )
   }
 }

@@ -1,12 +1,14 @@
 import React from 'react';
+import '../styles/images.css';
 
 const imageArray = images => images.map(photo => {
   let src = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
   return (
     <div
-      className="photo-grid__photo-container"
+      className="photo-grid-container"
       key={photo.id}
     >
+      { photo.title }
       <a href={src} target="_blank">
         <img
           className="photo"
@@ -19,8 +21,6 @@ const imageArray = images => images.map(photo => {
 });
 
 const ImageGrid = ({ images }) => {
-
-  console.log('imagesGrid', images);
   return (
     <div className="image-grid">
       {imageArray(images)}
